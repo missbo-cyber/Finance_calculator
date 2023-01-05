@@ -5,32 +5,36 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class LoginPage implements ActionListener {
-    JFrame frame = new JFrame();
+    JFrame frame = new JFrame("Piggy Bank");
     JButton loginButton = new JButton("login");
     JButton resetButton = new JButton("reset");
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField= new JPasswordField();
     JLabel userIDlabel = new JLabel("userID:");
     JLabel userPasswordlabel = new JLabel("Password:");
+    JLabel displayField = new JLabel();
     JLabel messagelabel = new JLabel();
+    ImageIcon image = new ImageIcon(getClass().getResource("piggyapp.gif"));
 
     HashMap<String,String> logininfo= new HashMap<String,String>();
     LoginPage(HashMap<String,String> loginInfoOriginal){
         logininfo= loginInfoOriginal;// the copy of the HashMap that is globally available to our login page so other methods can use it
-        userIDlabel.setBounds(50,100,75,25);
-        userPasswordlabel.setBounds(50,150,75,25);
-        messagelabel.setBounds(125,250,250,35);
-        messagelabel.setFont(new Font(null, Font.ITALIC,25));
-        userIDField.setBounds(125,100,200,25);
-        userPasswordField.setBounds(125,150,200,25);
-        loginButton.setBounds(125,200,100,25);
+        userIDlabel.setBounds(240,337,75,25);
+        userPasswordlabel.setBounds(240,387,75,25);
+        messagelabel.setBounds(350,487,250,35);
+        messagelabel.setFont(new Font("Tahoma", Font.PLAIN,25));
+        userIDField.setBounds(315,337,200,25);
+        userPasswordField.setBounds(315,387,200,25);
+        loginButton.setBounds(290,437,100,25);
         loginButton.addActionListener(this);
-        resetButton.setBounds(225,200,100,25);
+        resetButton.setBounds(415,437,100,25);
         resetButton.addActionListener(this);
-
+        displayField = new JLabel(image);
+        displayField.setBounds(215,30,375,275);
 
 
         frame.add(userIDlabel);
+        frame.add(displayField);
         frame.add(userPasswordlabel);
         frame.add(messagelabel);
         frame.add(userIDField);
@@ -38,7 +42,7 @@ public class LoginPage implements ActionListener {
         frame.add(loginButton);
         frame.add(resetButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// we can close the frame
-        frame.setSize(420,420);// the size of the frame
+        frame.setSize(800,600);// the size of the frame
         frame.setLayout(null);// without layout manager
         frame.setVisible(true);// we can see the frame
     }

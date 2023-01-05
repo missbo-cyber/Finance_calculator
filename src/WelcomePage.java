@@ -25,7 +25,7 @@ public class WelcomePage implements ActionListener {
         frame.add(showchartbutton);
         frame.add(definegoalsbutton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,420);
+        frame.setSize(757,610);
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -33,6 +33,11 @@ public class WelcomePage implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==createtablesbutton){
+            frame.dispose();
+            Table table = new Table();
+
+        }
 
     }
 }
