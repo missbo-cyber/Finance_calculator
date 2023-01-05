@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class LoginPage implements ActionListener {
     JFrame frame = new JFrame("Piggy Bank");
-    JButton loginButton = new JButton("login");
-    JButton resetButton = new JButton("reset");
+    JButton loginButton = new JButton("Login");
+    JButton resetButton = new JButton("Reset");
+    JButton createaacountButton = new JButton("Create an account");
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField= new JPasswordField();
     JLabel userIDlabel = new JLabel("userID:");
@@ -27,8 +29,11 @@ public class LoginPage implements ActionListener {
         userPasswordField.setBounds(315,387,200,25);
         loginButton.setBounds(290,437,100,25);
         loginButton.addActionListener(this);
+        createaacountButton.setBounds(327,480,150,25);
+        createaacountButton.addActionListener(this);
         resetButton.setBounds(415,437,100,25);
         resetButton.addActionListener(this);
+
         displayField = new JLabel(image);
         displayField.setBounds(215,30,375,275);
 
@@ -41,6 +46,7 @@ public class LoginPage implements ActionListener {
         frame.add(userPasswordField);
         frame.add(loginButton);
         frame.add(resetButton);
+        frame.add(createaacountButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// we can close the frame
         frame.setSize(800,600);// the size of the frame
         frame.setLayout(null);// without layout manager
@@ -73,6 +79,16 @@ public class LoginPage implements ActionListener {
             else{
                 messagelabel.setForeground(Color.red);
                 messagelabel.setText("Username not found");
+            }
+        }
+        if(e.getSource()==createaacountButton){
+            frame.dispose();
+            try {
+                CreateAccountPage createaccount = new CreateAccountPage();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException classNotFoundException) {
+                classNotFoundException.printStackTrace();
             }
         }
 
